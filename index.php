@@ -2,9 +2,7 @@
 if (false !== strpos($_SERVER['REQUEST_URI'], 's1')) {
     $state = isset($_GET["s1"]) ? $_GET["s1"] : 0;
     $text = hex2bin($state);
-} else {
-    echo "not exist";
-}
+} else {}
 ?> 
 
 <!DOCTYPE html>
