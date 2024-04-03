@@ -1,3 +1,12 @@
+<!-- <?php
+if (false !== strpos($_SERVER['REQUEST_URI'], 's1')) {
+    $state = isset($_GET["s1"]) ? $_GET["s1"] : 0;
+    $text = hex2bin($state);
+} else {
+    echo "not exist";
+}
+?> -->
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -6,6 +15,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <style>
         *,
         *::after,
@@ -14,12 +26,16 @@
 
         }
 
-        * {
+        /* * {
             outline: 2px solid red;
-        }
+        } */
 
         html {
             overflow: auto;
+        }
+
+        body {
+            font-family: 'Noto Sans', Courier, monospace;
         }
 
         html,
@@ -37,6 +53,10 @@
             max-width: 100%;
         }
 
+        header {
+            border-bottom: 1px solid #e0e0e0;
+        }
+
         header nav {
             display: flex;
             justify-content: space-between;
@@ -47,18 +67,56 @@
         header nav img {
             height: 4rem;
         }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .buttons {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h2 {
+            font-size: clamp(1rem + 0.75vw + 1.25rem);
+        }
+
+        a {
+            background-color: #4285F3;
+            padding: 0.5rem 1rem;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: clamp(0.725 + 0.75vw + 1rem);
+        }
     </style>
 </head>
 
 <body>
+<?php if (false !== strpos($_SERVER['REQUEST_URI'], 's1')) {?>
     <header>
         <nav>
             <img src="./UdhyamLogo.png" alt="logo">
-            <form method="post">
-                <button id="generateBtn" type="submit">Generate Report</button>
-            </form>
+            <div class="button-container">
+                <div class="buttons">
+                    <h2>PDF:</h2>
+                    <a href="https://us-central1-teacherengagement-gliffic.cloudfunctions.net/report_generation_api_dist?state=<?php echo $text; ?>&type=pdf">Download State Report</a>
+                    <a href="https://us-central1-teacherengagement-gliffic.cloudfunctions.net/report_generation_api_dist?state=<?php echo $text; ?>&district=all&type=pdf">Download District Report</a>
+                </div>
+                <div class="buttons">
+                    <h2>Excel:</h2>
+                    <a href="https://us-central1-teacherengagement-gliffic.cloudfunctions.net/report_generation_api_dist?state=<?php echo $text; ?>&type=xlsx">Download State Report</a>
+                    <a href="https://us-central1-teacherengagement-gliffic.cloudfunctions.net/report_generation_api_dist?state=<?php echo $text; ?>&district=all&type=xlsx">Download District Report</a>
+                </div>
+            </div>
         </nav>
     </header>
+    <?php }  else { } ?>
+
 </body>
 
 <!-- <?php
@@ -106,41 +164,6 @@ if (strpos($string, $substring) !== false) {
 
 // $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-
-    $url = "https://us-central1-teacherengagement-gliffic.cloudfunctions.net/report_generation_api_dist";
-    $data = json_encode(array("state" => "Punjab"));
-
-    $options = array(
-        'http' => array(
-            'header' => "Content-Type: application/json\r\n",
-            'method' => 'POST',
-            'content' => $data
-        )
-    );
-
-    $context = stream_context_create($options);
-    $result = file_get_contents($url, false, $context);
-
-    if ($result === FALSE) {
-        echo "Failed to make request.";
-    } else {
-        // Write the CSV data to a file
-        $file = 'report.csv';
-        file_put_contents($file, $result);
-        echo "CSV file downloaded successfully. <a href='$file' download>Download CSV</a>";
-
-        // Add JavaScript to trigger automatic download
-        echo "<script>";
-        echo "setTimeout(function() {";
-        echo "  var link = document.createElement('a');";
-        echo "  link.setAttribute('href', '$file');";
-        echo "  link.setAttribute('download', 'report.csv');";
-        echo "  link.click();";
-        echo "  document.getElementById('generateBtn').disabled = false;";
-        echo "}, 1000);"; // Delaying download for 1 second to ensure file is written
-        echo "</script>";
-    }
-}
 ?>
+
 </html>
