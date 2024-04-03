@@ -136,7 +136,6 @@ if (false !== strpos($_SERVER['REQUEST_URI'], 's1')) {
 
 <?php
 $udise_code = isset($_GET["udc"]) ? $_GET["udc"] : 0;
-
 $state = isset($_GET["s1"]) ? $_GET["s1"] : 0;
 $string = $_SERVER["REQUEST_URI"];
 $substring = "?s1";
