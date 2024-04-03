@@ -47,10 +47,6 @@
         header nav img {
             height: 4rem;
         }
-
-        .hidden {
-            display: none;
-        }
     </style>
 </head>
 
