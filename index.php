@@ -47,10 +47,6 @@
         header nav img {
             height: 4rem;
         }
-
-        .hidden {
-            display: none;
-        }
     </style>
 </head>
 
@@ -128,7 +124,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($result === FALSE) {
         echo "Failed to make request.";
-        exit;
     } else {
         // Write the CSV data to a file
         $file = 'report.csv';
@@ -145,7 +140,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "  document.getElementById('generateBtn').disabled = false;";
         echo "}, 1000);"; // Delaying download for 1 second to ensure file is written
         echo "</script>";
-        exit;
     }
 }
 ?>
