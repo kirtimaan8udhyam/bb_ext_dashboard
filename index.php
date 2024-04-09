@@ -1,11 +1,11 @@
-<!-- <?php
+<?php
 if (false !== strpos($_SERVER['REQUEST_URI'], 's1')) {
     $state = isset($_GET["s1"]) ? $_GET["s1"] : 0;
     $text = hex2bin($state);
 } else {
     echo "not exist";
 }
-?> -->
+?> 
 
 <!DOCTYPE html>
 
@@ -14,7 +14,7 @@ if (false !== strpos($_SERVER['REQUEST_URI'], 's1')) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title> <?php echo $text; ?> - Dashboard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -93,6 +93,11 @@ if (false !== strpos($_SERVER['REQUEST_URI'], 's1')) {
             text-decoration: none;
             font-size: clamp(0.725 + 0.75vw + 1rem);
         }
+
+        .image-container{
+            display: flex;
+            gap: 1rem;
+        }
     </style>
 </head>
 
@@ -100,7 +105,10 @@ if (false !== strpos($_SERVER['REQUEST_URI'], 's1')) {
 <?php if (false !== strpos($_SERVER['REQUEST_URI'], 's1')) {?>
     <header>
         <nav>
-            <img src="./UdhyamLogo.png" alt="logo">
+            <div class="image-container">
+                <img src="./UdhyamLogo.png" alt="logo">
+                <!-- <img src="./UdhyamLogo.png" alt="logo"> -->
+            </div>
             <div class="button-container">
                 <div class="buttons">
                     <h2>PDF:</h2>
