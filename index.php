@@ -94,6 +94,10 @@ if (false !== strpos($_SERVER['REQUEST_URI'], 's1')) {
             font-size: clamp(0.725 + 0.75vw + 1rem);
         }
 
+        a:hover{
+            background-color: #4245D1;
+        }
+
         .image-container{
             display: flex;
             gap: 1rem;
