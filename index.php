@@ -69,7 +69,7 @@ if (false !== strpos($_SERVER['REQUEST_URI'], 's1')) {
            height: 5rem;
         }
 
-        .udhyam_logo{
+        .udhyam_logos{
             height: 4rem;
         }
 
@@ -116,12 +116,12 @@ if (false !== strpos($_SERVER['REQUEST_URI'], 's1')) {
     <header>
         <nav>
             <div class="image-container">
-                <img class="udhyam_logo" src="./UdhyamLogo.png" alt="logo">
+                <img class="udhyam_logos" src="./UdhyamLogo.png" alt="logo">
                 <?php if ( $text == "Madhya Pradesh") {?>
-                    <img src="mpLogo.jpg" alt="logo">
+                    <img src="MPLogo.jpg" alt="logo">
                 <?php }?>
                 <?php if ( $text == "Punjab") {?>
-                    <img src="punjabLogo.jpg" alt="logo">
+                    <img src="PunjabLogo.jpg" alt="logo">
                 <?php }?>
             </div>
             <div class="button-container">
