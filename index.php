@@ -3,7 +3,7 @@ if (false !== strpos($_SERVER['REQUEST_URI'], 's1')) {
     $state = isset($_GET["s1"]) ? $_GET["s1"] : 0;
     $text = hex2bin($state);
 } else {
-    echo "not exist";
+    echo "";
 }
 ?> 
 
@@ -14,7 +14,7 @@ if (false !== strpos($_SERVER['REQUEST_URI'], 's1')) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> <?php echo $text; ?> - Dashboard</title>
+    <title> <?php if(false !== strpos($_SERVER['REQUEST_URI'], 's1')) { echo $text; ;} else {echo ""; } ?> Dashboard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -59,12 +59,17 @@ if (false !== strpos($_SERVER['REQUEST_URI'], 's1')) {
 
         header nav {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
             padding: 1rem;
         }
 
         header nav img {
+           height: 5rem;
+        }
+
+        .udhyam_logo{
             height: 4rem;
         }
 
@@ -81,7 +86,8 @@ if (false !== strpos($_SERVER['REQUEST_URI'], 's1')) {
         }
 
         h2 {
-            font-size: clamp(1rem + 0.75vw + 1.25rem);
+            font-size: clamp(0.75rem + 0.5vw + 1rem);
+            font-weight: 500;
         }
 
         a {
@@ -91,7 +97,7 @@ if (false !== strpos($_SERVER['REQUEST_URI'], 's1')) {
             border: none;
             border-radius: 4px;
             text-decoration: none;
-            font-size: clamp(0.725 + 0.75vw + 1rem);
+            font-size: clamp(0.75rem + 0.5vw + 1rem);
         }
 
         a:hover{
@@ -110,8 +116,13 @@ if (false !== strpos($_SERVER['REQUEST_URI'], 's1')) {
     <header>
         <nav>
             <div class="image-container">
-                <img src="./UdhyamLogo.png" alt="logo">
-                <!-- <img src="./UdhyamLogo.png" alt="logo"> -->
+                <img class="udhyam_logo" src="./UdhyamLogo.png" alt="logo">
+                <?php if ( $text == "Madhya Pradesh") {?>
+                    <img src="mpLogo.jpg" alt="logo">
+                <?php }?>
+                <?php if ( $text == "Punjab") {?>
+                    <img src="punjabLogo.jpg" alt="logo">
+                <?php }?>
             </div>
             <div class="button-container">
                 <div class="buttons">
