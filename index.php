@@ -1,11 +1,17 @@
 <?php
 if (false !== strpos($_SERVER['REQUEST_URI'], 's1')) {
+    if(strlen($_GET["s1"]) % 2 === 0){
+        
+    } else{
+        echo "Wrong state parameter";
+        die;
+    }
     $state = isset($_GET["s1"]) ? $_GET["s1"] : 0;
     $text = hex2bin($state);
 } else {
-    echo "not exist";
+    echo "";
 }
-?> -->
+?>
 
 <!DOCTYPE html>
 
@@ -14,7 +20,7 @@ if (false !== strpos($_SERVER['REQUEST_URI'], 's1')) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> <?php if(false !== strpos($_SERVER['REQUEST_URI'], 's1')) { echo $text; ;} else {echo ""; } ?> Dashboard</title>
+    <title><?php if(false !== strpos($_SERVER['REQUEST_URI'], 's1') && $text == "Madhya Pradesh") { echo "Tejasvi Dashboard - $text";} else if(false !== strpos($_SERVER['REQUEST_URI'], 's1') && $text == "Punjab") {echo "BB Dashboard - $text"; } else { echo "Dashboard"; } ?> </title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
