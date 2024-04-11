@@ -11,6 +11,7 @@ if (false !== strpos($_SERVER['REQUEST_URI'], 's1')) {
 } else {
     echo "";
 }
+?>
 
 <!DOCTYPE html>
 
