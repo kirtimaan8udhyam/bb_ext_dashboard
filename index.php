@@ -8,9 +8,10 @@ if (false !== strpos($_SERVER['REQUEST_URI'], 's1')) {
     }
     $state = isset($_GET["s1"]) ? $_GET["s1"] : 0;
     $text = hex2bin($state);
-} else { echo ""; }
+} else {
+    echo "";
+}
 ?>
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -122,10 +123,10 @@ if (false !== strpos($_SERVER['REQUEST_URI'], 's1')) {
             <div class="image-container">
                 <img class="udhyam_logos" src="./UdhyamLogo.png" alt="logo">
                 <?php if ( $text == "Madhya Pradesh") {?>
-                    <img src="MPLogo.jpg" alt="logo">
+                    <img src="mpLogo.jpg" alt="logo">
                 <?php }?>
                 <?php if ( $text == "Punjab") {?>
-                    <img src="PunjabLogo.jpg" alt="logo">
+                    <img src="punjabLogo.jpg" alt="logo">
                 <?php }?>
             </div>
             <div class="button-container">
