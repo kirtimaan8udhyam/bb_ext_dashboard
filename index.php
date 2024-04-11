@@ -12,6 +12,7 @@ if (false !== strpos($_SERVER['REQUEST_URI'], 's1')) {
     echo "";
 }
 ?>
+
 <!DOCTYPE html>
 
 <html lang="en">
