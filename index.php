@@ -13,8 +13,6 @@ if (false !== strpos($_SERVER['REQUEST_URI'], 's1')) {
 }
 ?>
 
-?>
-
 <!DOCTYPE html>
 
 <html lang="en">
