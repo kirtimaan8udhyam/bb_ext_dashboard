@@ -179,7 +179,7 @@ if (false !== strpos($_SERVER['REQUEST_URI'], 's1')) {
                         <img src="mpLogo.jpg" alt="logo">
                     <?php } ?>
                     <?php if ($text == "Punjab") { ?>
-                        <img src="punjabLogo.jpg" alt="logo">
+                        <img src="PunjabLogo.png" alt="logo">
                     <?php } ?>
                 </div>
                 <?php if (!empty(!empty($_GET['s1']))) { ?>
