@@ -32,9 +32,9 @@ if (isset($_GET['s1'])) {
             box-sizing: border-box;
         }
 
-        * {
+        /* * {
             outline: 2px solid hotpink;
-        }
+        } */
 
         body {
             font-family: Montserrat, Arial, sans-serif;
