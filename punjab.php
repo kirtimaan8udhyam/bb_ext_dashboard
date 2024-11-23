@@ -3,10 +3,6 @@ if (false !== strpos($_SERVER['REQUEST_URI'], 's1')) {
     if (strlen($_GET["s1"]) % 2 === 0) {
         $state = isset($_GET["s1"]) ? $_GET["s1"] : 0;
         $text = hex2bin($state);
-        if ($text === "Punjab") {
-            header("Location: dashboard.php?s1=$state");
-            exit;
-        }
         //echo $text;
         echo "<script>var stateName = '$text';</script>";
     } else {
@@ -17,6 +13,9 @@ if (false !== strpos($_SERVER['REQUEST_URI'], 's1')) {
     echo "";
 }
 ?>
+<!-- // https://bbextdashboard-iaphgjzbjq-as.a.run.app/?s1=50756E6A6162 
+ https://bbextdashboard-iaphgjzbjq-as.a.run.app/?s1=4d61646879612050726164657368
+-->
 
 <!DOCTYPE html>
 
@@ -153,6 +152,10 @@ if (false !== strpos($_SERVER['REQUEST_URI'], 's1')) {
             gap: 1rem;
         }
 
+        .image-container .pblogo{
+           height: 100px;
+        }
+
         #downloadButton:disabled {
         opacity: 0.6;
         cursor: not-allowed; 
@@ -184,7 +187,7 @@ if (false !== strpos($_SERVER['REQUEST_URI'], 's1')) {
                         <img src="mpLogo.jpg" alt="logo">
                     <?php } ?>
                     <?php if ($text == "Punjab") { ?>
-                        <img src="PunjabLogo.png" alt="logo">
+                        <img class="pblogo" src="PunjabLogo.png" alt="logo">
                     <?php } ?>
                 </div>
                 <?php if (!empty(!empty($_GET['s1']))) { ?>
